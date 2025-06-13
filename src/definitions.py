@@ -1,4 +1,4 @@
-from initial_processor import initial_processing
+from src.initial_processor import initial_processing
 
 
 definitions = {

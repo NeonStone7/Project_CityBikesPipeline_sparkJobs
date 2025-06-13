@@ -1,12 +1,12 @@
 from pyspark.sql.functions import *
-from commons import (
-    local_spark_session
-)
+# from src.commons import (
+#     local_spark_session
+# )
 
-spark = local_spark_session('processor')
+# spark = local_spark_session('processor')
 
-json_path = "resources/json_output_abu_dhabi_careem_bike.json"
-df = spark.read.option("multiline", "true").json(json_path)
+# json_path = "resources/json_output_abu_dhabi_careem_bike.json"
+# df = spark.read.option("multiline", "true").json(json_path)
 
 def initial_processing(df):
         
