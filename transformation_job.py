@@ -17,7 +17,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    spark = remote_spark_session(args.name)
+    spark = remote_spark_session(args.table_name)
 
     source_bucket = args.source_bucket
     network_name = args.network_name
