@@ -37,7 +37,7 @@ jobs:
 
       - name: upload spark job to s3
         run: |
-          aws s3 cp spark_jobs.zip s3://citybikes-raw-data/scripts/
+          aws s3 cp spark_jobs.zip s3://citybikes-raw-data/scripts/ -r
           
       - name: upload spark job file to s3
         run: |
