@@ -38,7 +38,7 @@ def save_to_iceberg(spark_session, df, table_name, schema, fields, location, par
         new_fields = new_fields + f"{field} {dtype}, "
     cmd = (
         f"CREATE EXTERNAL TABLE IF NOT EXISTS {catalog}.{schema}.{table_name}"
-        f" ({new_fields}) " + 
+        f" ({new_fields[:-2]}) " + 
         f" USING ICEBERG PARTITIONED BY ({partition}) LOCATION '{location}'"
     )
     spark_session.sql(cmd)
