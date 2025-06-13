@@ -25,19 +25,23 @@ if __name__ == '__main__':
     destination_bucket = args.destination_bucket
     table_name = args.table_name
 
+    split_date = args.date.split('-')
+    year, month, day = split_date[0], split_date[1][1:], split_date[2]
+
     schema = definitions[args.table_name]['schema']
     fields = definitions[args.table_name]['fields']
 
     # set args
-    source_path = f"s3://{source_bucket}/{network_name}/{date}/{network_name}.json"
     destination_path = f"s3://{destination_bucket}/{schema}/{table_name}/"
 
-    # read from source
-    df = spark.read.option("multiline", "true").json(source_path)
-
     # transform data
-    transformed_df = definitions[args.table_name]['transformer'](df)
+    transformed_df = definitions[args.table_name]['transformer'](spark=spark, 
+                                                                 catalog='aggregated',
+                                                                 schema=schema,
+                                                                 table_name=table_name, 
+                                                                 year=year, 
+                                                                 month=month,
+                                                                 day=day)
 
     # save to iceberg
     save_to_iceberg(spark, transformed_df, table_name, schema, fields, destination_path)
-

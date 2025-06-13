@@ -42,3 +42,4 @@ jobs:
       - name: upload spark job file to s3
         run: |
           aws s3 cp transformation_job.py s3://citybikes-raw-data/scripts/ 
+          aws s3 cp aggregation_job.py s3://citybikes-raw-data/scripts/ 
