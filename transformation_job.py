@@ -33,7 +33,8 @@ if __name__ == '__main__':
     destination_path = f"s3://{destination_bucket}/{schema}/{table_name}/"
 
     # read from source
-    df = spark.read.parquet(source_path)
+    df = spark.read.option("multiline", "true").json(source_path)
+
 
     # transform data
     transformed_df = definitions[args.table_name]['transformer'](df)
