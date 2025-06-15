@@ -16,8 +16,8 @@ def remote_spark_session(name):
         .config('hive.exec.dynamic.partition.mode', 'nonstrict')
         .config('spark.sql.source.partitionOverwriteMode', 'dynamic')
         .config('spark.sql.extensions', 'org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions')
-        .config('spark.sql.catalog.spark_catalog', 'org.apache.iceberg.spark.SparkSessionCatalog')
-        .config('spark.sql.catalog.spark_catalog.catalog-impl', 'org.apache.iceberg.aws.glue.SparkCatalog')
+        .config('spark.sql.catalog.spark_catalog', 'org.apache.iceberg.spark.SparkCatalog')
+        .config('spark.sql.catalog.spark_catalog.catalog-impl', 'org.apache.iceberg.aws.glue.GlueCatalog')
         .config('spark.sql.catalog.spark_catalog.io-impl', 'org.apache.iceberg.aws.s3.S3FileIO')
         .config('spark.sql.catalog.spark_catalog.warehouse', 's3://citybikes-transformed-data')  # 🔵 REQUIRED
         .config('spark.sql.legacy.timeParserPolicy', 'LEGACY')
