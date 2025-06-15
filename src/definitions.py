@@ -26,7 +26,7 @@ definitions = {
             'station_name': 'string',
             'station_latitude': 'double',
             'station_longitude': 'double',
-            'station_timestamp': 'timestamp',
+            'station_timestamp': 'string',
             'station_free_bikes': 'int',
             'station_empty_slots': 'int',
             'processing_timestamp': 'timestamp',
